@@ -65,7 +65,119 @@ The reproduced results match the findings of the paper:
     </tr>
   </table>
 
-Results for other models are available [here](https://drive.google.com/drive/folders/1Azb5cNOOTnu5KtHXSZw9waYHPEoySMOT?usp=sharing)
+- Generalization
+
+  For the generalization experiments, the probe was trained and evaluated at layer 10 for Llama-2-7b and at layer 15 for Llama-2-13b.
+
+  Llama-2-7b
+
+  <table>
+    <tr>
+      <td align="center"><strong>Paper</strong></td>
+      <td align="center"><strong>Reproduced</strong></td>
+    </tr>
+    <tr>
+      <td><img src="results/generalization-llama-2-7b.png" alt="Generalization result from the paper for Llama-2-7b" width="420" /></td>
+      <td><img src="results/generalization-llama-2-7b-rep-layer10.png" alt="Reproduced generalization result for Llama-2-7b at layer 10" width="420" /></td>
+    </tr>
+  </table>
+
+  Llama-2-13b
+
+  <table>
+    <tr>
+      <td align="center"><strong>Paper</strong></td>
+      <td align="center"><strong>Reproduced</strong></td>
+    </tr>
+    <tr>
+      <td><img src="results/generalization-llama-2-13b.png" alt="Generalization result from the paper for Llama-2-13b" width="420" /></td>
+      <td><img src="results/generalization-llama-2-13b-rep-layer15.png" alt="Reproduced generalization result for Llama-2-13b at layer 15" width="420" /></td>
+    </tr>
+  </table>
+
+- NIE
+
+  NIE was measured on Llama-2-7b by intervening on tokens from layers 5 to 10 and on Llama-2-13b by intervening on tokens from layers 8 to 14.
+  Across both models, MM generally produced stronger intervention results than LR. The difference is especially clear on Llama-2-13b.
+
+  <table>
+    <tr>
+      <th rowspan="2">Train set</th>
+      <th rowspan="2">Probe</th>
+      <th colspan="2">Llama-2-13b</th>
+      <th colspan="2">Llama-2-7b</th>
+    </tr>
+    <tr>
+      <th>false-to-true</th>
+      <th>true-to-false</th>
+      <th>false-to-true</th>
+      <th>true-to-false</th>
+    </tr>
+    <tr>
+      <td rowspan="2"><code>cities</code></td>
+      <td>LR</td>
+      <td>0.138</td>
+      <td>0.100</td>
+      <td>-0.064</td>
+      <td>-0.005</td>
+    </tr>
+    <tr>
+      <td>MM</td>
+      <td>0.663</td>
+      <td>0.770</td>
+      <td>0.014</td>
+      <td>0.032</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><code>cities_combined</code></td>
+      <td>LR</td>
+      <td>0.205</td>
+      <td>0.353</td>
+      <td>-0.014</td>
+      <td>0.002</td>
+    </tr>
+    <tr>
+      <td>MM</td>
+      <td>0.697</td>
+      <td>0.811</td>
+      <td>0.017</td>
+      <td>-0.015</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><code>larger_than</code></td>
+      <td>LR</td>
+      <td>0.197</td>
+      <td>0.169</td>
+      <td>-0.081</td>
+      <td>-0.012</td>
+    </tr>
+    <tr>
+      <td>MM</td>
+      <td>0.491</td>
+      <td>0.600</td>
+      <td>-0.071</td>
+      <td>0.003</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><code>larger_than_combined</code></td>
+      <td>LR</td>
+      <td>0.070</td>
+      <td>0.070</td>
+      <td>-0.007</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <td>MM</td>
+      <td>0.214</td>
+      <td>0.332</td>
+      <td>-0.007</td>
+      <td>0.000</td>
+    </tr>
+  </table>
+
+  This comparison table shows that the intervention effect is much stronger for Llama-2-13b than for Llama-2-7b.
+
+Results of PCA for other models are available [here](https://drive.google.com/drive/folders/1Azb5cNOOTnu5KtHXSZw9waYHPEoySMOT?usp=sharing)
 
 ---
 
